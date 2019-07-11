@@ -34,21 +34,21 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         if(v==b1){
             startActivity(intent_b1);
-            Toast.makeText(this, "go go go", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Yeni veri girişi", Toast.LENGTH_SHORT).show();
         }
         else if(v==b2){
             startActivity(intent_b2);
-            Toast.makeText(this, "go go go", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Veri düzenlemesi", Toast.LENGTH_SHORT).show();
 
         }
         else if(v==b3){
             startActivity(intent_b3);
-            Toast.makeText(this, "go go go", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Onaylı Veriler", Toast.LENGTH_SHORT).show();
 
         }
         else if(v==b4){
             startActivity(intent_b4);
-            Toast.makeText(this, "go go go", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Onaylanmamış veriler", Toast.LENGTH_SHORT).show();
 
         }
     }

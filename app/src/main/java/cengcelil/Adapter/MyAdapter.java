@@ -65,9 +65,9 @@ public class MyAdapter extends BaseAdapter {
         txt_2.setText(datalar.getData2());
         txt_3.setText(datalar.getData3());}
         if(datalar.getOnay()==0)
-            convertView.setBackgroundColor(Color.parseColor("#FB5555"));
+            convertView.setBackgroundColor(Color.parseColor("#55FB5555"));
         else
-            convertView.setBackgroundColor(Color.parseColor("#7BFB55"));
+            convertView.setBackgroundColor(Color.parseColor("#557BFB55"));
 
         return convertView;
     }

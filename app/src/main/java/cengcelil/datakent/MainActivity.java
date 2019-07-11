@@ -75,8 +75,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(password.length() ==0)
                     et_pass.setError("Şifre kısmı boş bırakılamaz.");
-                else
-                    veri_oku();
+                else{        finish();
+                    startActivity(i);
+                }
+
+                    //veri_oku();
             }
         });
 

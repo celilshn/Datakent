@@ -25,6 +25,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         b4.setOnClickListener(this);
 
         intent_b1=new Intent(this,Button1Activity.class);
+        intent_b2=new Intent(this,Button2Activity.class);
+        intent_b3=new Intent(this,Button3Activity.class);
     }
 
     @Override
@@ -35,9 +37,13 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }
         else if(v==b2){
             startActivity(intent_b2);
+            Toast.makeText(this, "go go go", Toast.LENGTH_SHORT).show();
+
         }
         else if(v==b3){
             startActivity(intent_b3);
+            Toast.makeText(this, "go go go", Toast.LENGTH_SHORT).show();
+
         }
         else if(v==b4){
             startActivity(intent_b4);

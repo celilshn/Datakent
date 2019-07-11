@@ -3,8 +3,8 @@
     package="cengcelil.datakent">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,10 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Button1Activity"></activity>
-        <activity android:name=".MainActivity"/>
-
-        <activity android:name=".SecondActivity" >
+        <activity android:name=".Button3Activity"></activity>
+        <activity android:name=".Button2Activity" />
+        <activity android:name=".Button1Activity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SecondActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

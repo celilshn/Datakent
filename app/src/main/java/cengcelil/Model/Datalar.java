@@ -1,12 +1,23 @@
 package cengcelil.Model;
 
 public class Datalar {
-    public Datalar(String id,String datah, String data1, String data2, String data3) {
+    public Datalar(String id, String datah, int onay) {
+        this.id=id;
+        this.datah = datah;
+        this.onay=onay;
+    }
+
+    public void setOnay(int onay) {
+        this.onay = onay;
+    }
+
+    public Datalar(String id, String datah, String data1, String data2, String data3,int onay) {
         this.id=id;
         this.datah = datah;
         this.data1 = data1;
         this.data2 = data2;
         this.data3 = data3;
+        this.onay=onay;
     }
 
     public String getId() {
@@ -51,5 +62,11 @@ public class Datalar {
 
     String id;
     String datah,data1,data2,data3;
+
+    public int getOnay() {
+        return onay;
+    }
+
+    int onay;
 
 }

@@ -11,5 +11,6 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBorder">#d0ced0</color>
-
+    <color name="color_unchecked">#FB5555</color>
+    <color name="color_checked">#7BFB55</color>
 </resources>

@@ -1,4 +1,5 @@
 package cengcelil.datakent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,13 +21,13 @@ public class Button1Activity extends AppCompatActivity {
     ListView listView;
     ArrayList<Datalar>arrayList;
     MyAdapter myAdapter;
-    Button new_data;
+    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button1);
-        new_data=findViewById(R.id.button6);
         listView=findViewById(R.id.listview);
+        floatingActionButton=findViewById(R.id.fab);
         databaseHelper=new DatabaseHelper(this);
         arrayList=new ArrayList<>();
         LoadDataInListView();

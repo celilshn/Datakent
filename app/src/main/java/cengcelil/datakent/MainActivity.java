@@ -69,10 +69,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 username=et_username.getText().toString().trim();
                 password=et_pass.getText().toString().trim();
-                if(username.length()==0 || password.length() ==0)
+                if(username.length()==0)
                 {
-                    Toast.makeText(MainActivity.this, "Lütfen eksik yerleri doldurunuz.", Toast.LENGTH_SHORT).show();
+                    et_username.setError("Kullanıcı adı kısmı boş bırakılamaz.");
                 }
+                else if(password.length() ==0)
+                    et_pass.setError("Şifre kısmı boş bırakılamaz.");
                 else
                     veri_oku();
             }

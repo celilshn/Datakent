@@ -58,7 +58,7 @@ public class MyAdapter extends BaseAdapter {
             txt_2 = convertView.findViewById(R.id.textView2);
             txt_3 = convertView.findViewById(R.id.textView3);
         }
-        txt_id.setText(datalar.getId());
+        txt_id.setText(datalar.getId()+".");
         txt_h.setText(datalar.getDatah());
         if(activity!=1){
         txt_1.setText(datalar.getData1());

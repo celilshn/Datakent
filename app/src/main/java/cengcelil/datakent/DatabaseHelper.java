@@ -94,6 +94,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+    public ArrayList<Datalar> getAllData_b4() {
+        ArrayList<Datalar>arrayList =new ArrayList<>();
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor =db.rawQuery(("SELECT * FROM Data WHERE onay = 0"),null);
+        while(cursor.moveToNext()){
+            String data_id=cursor.getString(0);
+            String datah=cursor.getString(1);
+            String data1=cursor.getString(2);
+            String data2=cursor.getString(3);
+            String data3=cursor.getString(4);
+            int onay=Integer.valueOf(cursor.getString(5));
+            Datalar datalar=new Datalar(data_id,datah,data1,data2,data3,onay);
+            arrayList.add(datalar);
+        }
+        return arrayList;
+    }
+
 
     public boolean editOnay(String id,int onay){
         contentValues.put("onay",onay);

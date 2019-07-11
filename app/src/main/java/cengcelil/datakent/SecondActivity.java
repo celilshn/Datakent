@@ -27,6 +27,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         intent_b1=new Intent(this,Button1Activity.class);
         intent_b2=new Intent(this,Button2Activity.class);
         intent_b3=new Intent(this,Button3Activity.class);
+        intent_b4=new Intent(this,Button4Activity.class);
     }
 
     @Override
@@ -47,6 +48,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }
         else if(v==b4){
             startActivity(intent_b4);
+            Toast.makeText(this, "go go go", Toast.LENGTH_SHORT).show();
+
         }
     }
 }

@@ -3,20 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".Button4Activity">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/textView23"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -24,7 +22,7 @@
             android:text="log_id" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/textView24"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
@@ -32,34 +30,25 @@
             android:text="data id" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/textView25"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:text="data h" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/textView26"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:text="operation" />
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/textView27"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
             android:text="time" />
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/list_view_b4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>

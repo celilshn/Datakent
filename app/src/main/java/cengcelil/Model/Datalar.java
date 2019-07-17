@@ -1,6 +1,30 @@
 package cengcelil.Model;
 
 public class Datalar {
+    public String getLog() {
+        return log;
+    }
+
+    public String getLog_id() {
+        return log_id;
+    }
+
+    String log;
+
+    public String getDate() {
+        return date;
+    }
+
+    String date;
+    public Datalar(String log_id, String data_id,String t1, String log,String date) {
+        this.log_id=log_id;
+        this.id = data_id;
+        this.datah=t1;
+        this.date=date;
+    this.log=log;
+
+    }
+
     public Datalar(String id, String datah, int onay) {
         this.id=id;
         this.datah = datah;
@@ -11,6 +35,19 @@ public class Datalar {
         this.onay = onay;
     }
 
+    public Datalar(String id, String datah, String data1,int onay) {
+        this.id=id;
+        this.datah = datah;
+        this.data1 = data1;
+        this.onay=onay;
+    }
+    public Datalar(String id, String datah, String data1, String data2,int onay) {
+        this.id=id;
+        this.datah = datah;
+        this.data1 = data1;
+        this.data2 = data2;
+        this.onay=onay;
+    }
     public Datalar(String id, String datah, String data1, String data2, String data3,int onay) {
         this.id=id;
         this.datah = datah;
@@ -60,7 +97,7 @@ public class Datalar {
         this.data3 = data3;
     }
 
-    String id;
+    String id,log_id;
     String datah,data1,data2,data3;
 
     public int getOnay() {

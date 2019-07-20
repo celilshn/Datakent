@@ -37,7 +37,7 @@ public class Button3Activity extends AppCompatActivity {
         t2=findViewById(R.id.textView17);
         t3=findViewById(R.id.textView18);
         spinner=findViewById(R.id.spinner2);
-        String[] option={"Onaylı Veriler","Onaylanmamış Veriler"};
+        String[] option={"Beklemede","Iptal","Gönderildi"};
 
         ArrayAdapter adapter=new ArrayAdapter(this,android.R.layout.simple_spinner_item,option);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -85,9 +85,11 @@ public class Button3Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(parent.getSelectedItemPosition()==0)
-                    LoadDataInListView_b3();
-                else
-                    LoadDataInListView_b4();
+                    LoadDataInListView_wait();
+                else if(parent.getSelectedItemPosition()==1)
+                    LoadDataInListView_cancel();
+                else if(parent.getSelectedItemPosition()==2)
+                    LoadDataInListView_sent();
             }
 
             @Override
@@ -96,8 +98,8 @@ public class Button3Activity extends AppCompatActivity {
         });
     }
 
-    private void LoadDataInListView_b3() {
-        arrayList=databaseHelper.getAllData_b3();
+    private void LoadDataInListView_wait() {
+        arrayList=databaseHelper.getAllData_wait();
         myAdapter=new MyAdapter(this,arrayList,3);
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,10 +118,10 @@ public class Button3Activity extends AppCompatActivity {
                 button_yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean result=databaseHelper.editOnay(arrayList.get(position).getId(),0);
+                        boolean result=databaseHelper.editOnay(arrayList.get(position).getId(),"iptal");
                         if(result)
-                            Toast.makeText(Button3Activity.this, "Onay iptal edildi", Toast.LENGTH_SHORT).show();
-                        updateList_b3();
+                            Toast.makeText(Button3Activity.this, "Onay iptal", Toast.LENGTH_SHORT).show();
+                        updateList_wait();
                         alertDialog.dismiss();
                     }
                 });
@@ -134,8 +136,8 @@ public class Button3Activity extends AppCompatActivity {
             }
         });
     }
-    private void LoadDataInListView_b4() {
-        arrayList=databaseHelper.getAllData_b4();
+    private void LoadDataInListView_cancel() {
+        arrayList=databaseHelper.getAllData_cancel();
         myAdapter=new MyAdapter(this,arrayList,3);
         listView.setAdapter(myAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -154,10 +156,10 @@ public class Button3Activity extends AppCompatActivity {
                 button_yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean result=databaseHelper.editOnay(arrayList.get(position).getId(),1);
+                        boolean result=databaseHelper.editOnay(arrayList.get(position).getId(),"beklemede");
                         if(result)
                             Toast.makeText(Button3Activity.this, "Onaylandı", Toast.LENGTH_SHORT).show();
-                        updateList_b4();
+                        updateList_cancel();
                         alertDialog.dismiss();
                     }
                 });
@@ -172,13 +174,56 @@ public class Button3Activity extends AppCompatActivity {
             }
         });
     }
-    public void updateList_b3(){
-        arrayList=databaseHelper.getAllData_b3();
+    private void LoadDataInListView_sent() {
+        arrayList=databaseHelper.getAllData_sent();
+        myAdapter=new MyAdapter(this,arrayList,3);
+        listView.setAdapter(myAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(final AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(Button3Activity.this);
+                View mView=getLayoutInflater().inflate(R.layout.dialog_check,null);
+                final Button button_yes=mView.findViewById(R.id.button9);
+                final Button button_no=mView.findViewById(R.id.button10);
+                TextView textView_alert=mView.findViewById(R.id.textView8);
+                textView_alert.setText("Verinin onayını iptal etmek için 'Onayı iptal et' butonuna tıklayınız");
+                builder.setView(mView);
+                final AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+                button_yes.setText("Onayı iptal et");
+                button_yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean result=databaseHelper.editOnay(arrayList.get(position).getId(),"iptal");
+                        if(result)
+                            Toast.makeText(Button3Activity.this, "Onay iptal", Toast.LENGTH_SHORT).show();
+                        updateList_sent();
+                        alertDialog.dismiss();
+                    }
+                });
+                button_no.setText("İptal");
+                button_no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+            }
+        });
+    }
+    public void updateList_wait(){
+        arrayList=databaseHelper.getAllData_wait();
         myAdapter=new MyAdapter(this,arrayList,3);
         listView.setAdapter(myAdapter);
     }
-    public void updateList_b4(){
-        arrayList=databaseHelper.getAllData_b4();
+    public void updateList_cancel(){
+        arrayList=databaseHelper.getAllData_cancel();
+        myAdapter=new MyAdapter(this,arrayList,3);
+        listView.setAdapter(myAdapter);
+    }
+    public void updateList_sent(){
+        arrayList=databaseHelper.getAllData_sent();
         myAdapter=new MyAdapter(this,arrayList,3);
         listView.setAdapter(myAdapter);
     }

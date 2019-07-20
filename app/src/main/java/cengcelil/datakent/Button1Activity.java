@@ -117,12 +117,12 @@ public class Button1Activity extends AppCompatActivity {
         new_data_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int onay;
+                String onay;
                 boolean result = false;
                 if(checked_data.isChecked())
-                    onay=1;
+                    onay="iptal";
                 else
-                    onay=0;
+                    onay="beklemede";
                 if(count==0)
                 {
 

@@ -16,45 +16,45 @@ public class Datalar {
     }
 
     String date;
-    public Datalar(String log_id, String data_id,String t1, String log,String date) {
+    public Datalar(String log_id, String data_id,String t1, String log,String date,int k) {
         this.log_id=log_id;
         this.id = data_id;
         this.datah=t1;
         this.date=date;
-    this.log=log;
+     this.log=log;
 
     }
 
-    public Datalar(String id, String datah, int onay) {
+    public Datalar(String id, String datah, String status) {
         this.id=id;
         this.datah = datah;
-        this.onay=onay;
+        this.status=status;
     }
 
-    public void setOnay(int onay) {
-        this.onay = onay;
+    public void setstatus(String status) {
+        this.status = status;
     }
 
-    public Datalar(String id, String datah, String data1,int onay) {
+    public Datalar(String id, String datah, String data1,String status) {
         this.id=id;
         this.datah = datah;
         this.data1 = data1;
-        this.onay=onay;
+        this.status=status;
     }
-    public Datalar(String id, String datah, String data1, String data2,int onay) {
+    public Datalar(String id, String datah, String data1, String data2,String status) {
         this.id=id;
         this.datah = datah;
         this.data1 = data1;
         this.data2 = data2;
-        this.onay=onay;
+        this.status=status;
     }
-    public Datalar(String id, String datah, String data1, String data2, String data3,int onay) {
+    public Datalar(String id, String datah, String data1, String data2, String data3,String status) {
         this.id=id;
         this.datah = datah;
         this.data1 = data1;
         this.data2 = data2;
         this.data3 = data3;
-        this.onay=onay;
+        this.status=status;
     }
 
     public String getId() {
@@ -100,10 +100,10 @@ public class Datalar {
     String id,log_id;
     String datah,data1,data2,data3;
 
-    public int getOnay() {
-        return onay;
+    public String getStatus() {
+        return status;
     }
 
-    int onay;
+    String status;
 
 }

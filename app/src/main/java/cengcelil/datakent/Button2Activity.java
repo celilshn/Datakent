@@ -133,7 +133,7 @@ public class Button2Activity extends AppCompatActivity {
                     edit_data_3.setText(arrayList.get(position).getData3());
                 }
 
-                if(arrayList.get(position).getOnay()==1)
+                if(arrayList.get(position).getStatus()=="beklemede")
                     cheched_data.setChecked(true);
                 builder.setView(mView);
                 final AlertDialog alertDialog=builder.create();
@@ -149,12 +149,12 @@ public class Button2Activity extends AppCompatActivity {
                 accept_edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int onay;
+                        String onay;
                         boolean result=false;
                         if(cheched_data.isChecked())
-                            onay = 1;
+                            onay = "iptal";
                         else
-                            onay = 0;
+                            onay = "beklemede";
 
                         if(count==0)
                         {

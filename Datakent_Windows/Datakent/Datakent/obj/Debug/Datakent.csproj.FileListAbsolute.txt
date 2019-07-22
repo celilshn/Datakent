@@ -1,0 +1,10 @@
+D:\Windows Projelerim\Datakent\Datakent\bin\Debug\Datakent.exe.config
+D:\Windows Projelerim\Datakent\Datakent\bin\Debug\Datakent.exe
+D:\Windows Projelerim\Datakent\Datakent\bin\Debug\Datakent.pdb
+D:\Windows Projelerim\Datakent\Datakent\obj\Debug\Datakent.csprojAssemblyReference.cache
+D:\Windows Projelerim\Datakent\Datakent\obj\Debug\Datakent.Properties.Resources.resources
+D:\Windows Projelerim\Datakent\Datakent\obj\Debug\Datakent.csproj.GenerateResource.cache
+D:\Windows Projelerim\Datakent\Datakent\obj\Debug\Datakent.csproj.CoreCompileInputs.cache
+D:\Windows Projelerim\Datakent\Datakent\obj\Debug\Datakent.exe
+D:\Windows Projelerim\Datakent\Datakent\obj\Debug\Datakent.pdb
+D:\Windows Projelerim\Datakent\Datakent\obj\Debug\Datakent.Form1.resources

@@ -1,10 +1,10 @@
 package cengcelil.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,54 +19,145 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
     String data_h;
     String data_1=null;
     String data_2=null;
+    String data_3=null;
+
     Connection connection;
+    int count,scount;
     public static final String SERVER_NAME="192.168.1.102:1433";
     public static final String DATABASE_NAME="Datakent";
     public static final String USER_NAME="DELL";
     public static final String PASS_WORD="dell";
-
-    public MSSQL_Adapter(String data_h) {
+    boolean check=true;
+    static String k1,k2,k3,k4;
+    Context context;
+    public MSSQL_Adapter(String data_h,boolean c,Context context) {
         this.data_h = data_h;
+        count=1;
+        if(!c)
+            create();
+        this.context=context;
 
     }
-    public MSSQL_Adapter(String data_h, String data_1) {
+    public MSSQL_Adapter(String data_h, String data_1,boolean c,Context context) {
         this.data_h = data_h;
         this.data_1 = data_1;
-
+        count=2;
+        if(!c)
+            create();
+        this.context=context;
 
     }
-    public MSSQL_Adapter(String data_h, String data_1, String data_2) {
+    public MSSQL_Adapter(String data_h, String data_1, String data_2,boolean c,Context context) {
         this.data_h = data_h;
         this.data_1 = data_1;
         this.data_2 = data_2;
+        count=3;
+        if(!c)
+            create();
+        this.context=context;
 
     }
-    public MSSQL_Adapter(String data_h, String data_1, String data_2, String data_3) {
+    public MSSQL_Adapter(String data_h, String data_1, String data_2, String data_3,boolean c,Context context) {
         this.data_h = data_h;
         this.data_1 = data_1;
         this.data_2 = data_2;
         this.data_3 = data_3;
+        count=4;
+        if(!c)
+            create();
+        this.context=context;
 
     }
 
-    String data_3=null;
+    public void create() {
+        connection=Baglanti(USER_NAME,PASS_WORD,DATABASE_NAME,SERVER_NAME);
+        String query = null;
+
+        if (count == 1) {
+            query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
+
+        } else if (count == 2) {
+            query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[" + data_1 + "] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
+
+        }
+        else if (count == 3) {
+            query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[" + data_1 + "] TEXT NULL,[" + data_2 + "] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
+
+        } else if (count == 4) {
+
+            query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[" + data_1 + "] TEXT NULL,[" + data_2 + "] TEXT NULL,[" + data_3 + "] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
+
+        }
+        Statement statement= null;
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet=statement.executeQuery(query);
+            if(resultSet.next()){
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        check = false;
+    }
+
     @Override
     protected String doInBackground(String... strings) { //middle
         String mesaj;
         connection=Baglanti(USER_NAME,PASS_WORD,DATABASE_NAME,SERVER_NAME);
-        if(connection==null)
+        if(context!=null){
+            SharedPreferences sharedPreferences = context.getSharedPreferences("key", Context.MODE_PRIVATE);
+            scount=sharedPreferences.getInt("key_count",0);
+            if(scount==0)
+            {
+                k1=sharedPreferences.getString("key_table1","0");
+
+            }
+            else if(scount==1)
+            {
+                k1=sharedPreferences.getString("key_table1","0");
+                k2=sharedPreferences.getString("key_table2","0");
+
+
+            }
+            else if(scount==2)
+            {
+                k1=sharedPreferences.getString("key_table1","0");
+                k2=sharedPreferences.getString("key_table2","0");
+                k3=sharedPreferences.getString("key_table3","0");
+
+            }
+            else if(scount==3)
+            {
+                k1=sharedPreferences.getString("key_table1","0");
+                k2=sharedPreferences.getString("key_table2","0");
+                k3=sharedPreferences.getString("key_table3","0");
+                k4=sharedPreferences.getString("key_table4","0");
+
+            }
+        }
+        if(connection==null || check ==false)
         {
             mesaj="sıkıntı";
         }
         else
         {
             String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-            String query="INSERT INTO [dbo].[table_1] ([kolon_1],[kolon_2],[kolon_3],[kolon_4],[kontrol],[add_time]) VALUES('"+data_h+"','"+data_1+"','"+data_2+"','"+data_3
-                    +"','not checked','" +currentDateTimeString+"');";
+            String query=null;
+            if(count==1)
+                 query="INSERT INTO [dbo].[Data] (["+k1+"],[kontrol],[add_time]) VALUES('"+data_h+"','not checked','" +currentDateTimeString+"');";
+            else if(count==2)
+                query="INSERT INTO [dbo].[Data] (["+k1+"],["+k2+"],[kontrol],[add_time]) VALUES('"+data_h+"','"+data_1+"','not checked','" +currentDateTimeString+"');";
+            else if(count==3)
+                query="INSERT INTO [dbo].[Data] (["+k1+"],["+k2+"],["+k3+"],[kontrol],[add_time]) VALUES('"+data_h+"','"+data_1+"','"+data_2+"','not checked','" +currentDateTimeString+"');";
+            else if(count==4)
+                query="INSERT INTO [dbo].[Data] (["+k1+"],["+k2+"],["+k3+"],["+k4+"],[kontrol],[add_time]) VALUES('"+data_h+"','"+data_1+"','"+data_2+"','"+data_3
+                        +"','not checked','" +currentDateTimeString+"');";
+
             try {
                 Statement statement=connection.createStatement();
-                ResultSet resultSet=statement.executeQuery(query);
-                if(resultSet.next()){
+                boolean resultSet=statement.execute(query);
+                if(resultSet){
                     mesaj="başarılı";
                     success=true;
                     connection.close();

@@ -25,12 +25,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     int count;
     boolean check;
     String s_data_h;
-
+    Context context;
     public DatabaseHelper(Context context, String table_1, int a) {
         super(context, "datakent.db", null, 1);
         this.table_1 = table_1;
         if (check)
             create();
+        this.context=context;
 
     }
 
@@ -40,6 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         count = 1;
         if (check)
             create();
+        this.context=context;
 
     }
 
@@ -50,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         count = 2;
         if (check)
             create();
+        this.context=context;
 
     }
 
@@ -61,6 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         count = 3;
         if (check)
             create();
+        this.context=context;
 
     }
 
@@ -73,6 +77,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         count = 4;
         if (check)
             create();
+        this.context=context;
+
     }
 
 
@@ -80,15 +86,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (count == 1) {
             db.execSQL("CREATE TABLE Data (data_id INTEGER PRIMARY KEY AUTOINCREMENT," + table_1 + " TEXT,status TEXT,add_time TEXT)");
             db.execSQL("CREATE TABLE Data_log (log_id INTEGER PRIMARY KEY AUTOINCREMENT,data_id INTEGER," + table_1 + " TEXT,log TEXT,date TEXT)");
+            MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(table_1,false,context);
+            mssql_adapter.execute("");
         } else if (count == 2) {
             db.execSQL("CREATE TABLE Data (data_id INTEGER PRIMARY KEY AUTOINCREMENT," + table_1 + " TEXT," + table_2 + " TEXT,status TEXT,add_time TEXT)");
             db.execSQL("CREATE TABLE Data_log (log_id INTEGER PRIMARY KEY AUTOINCREMENT,data_id INTEGER," + table_1 + " TEXT,log TEXT,date TEXT)");
+            MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(table_1,table_2,false,context);
+            mssql_adapter.execute("");
         } else if (count == 3) {
             db.execSQL("CREATE TABLE Data (data_id INTEGER PRIMARY KEY AUTOINCREMENT," + table_1 + " TEXT," + table_2 + " TEXT," + table_3 + " TEXT,status TEXT,add_time TEXT)");
             db.execSQL("CREATE TABLE Data_log (log_id INTEGER PRIMARY KEY AUTOINCREMENT,data_id INTEGER," + table_1 + " TEXT,log TEXT,date TEXT)");
+            MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(table_1,table_2,table_3,false,context);
+            mssql_adapter.execute("");
         } else if (count == 4) {
             db.execSQL("CREATE TABLE Data (data_id INTEGER PRIMARY KEY AUTOINCREMENT," + table_1 + " TEXT," + table_2 + " TEXT," + table_3 + " TEXT," + table_4 + " TEXT,status TEXT,add_time TEXT)");
             db.execSQL("CREATE TABLE Data_log (log_id INTEGER PRIMARY KEY AUTOINCREMENT,data_id INTEGER," + table_1 + " TEXT,log TEXT,date TEXT)");
+            MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(table_1,table_2,table_3,table_4,false,context);
+            mssql_adapter.execute("");
         }
         check = false;
     }
@@ -505,7 +519,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             public void onFinish() {
                 contentValues.put("status","gonderildi");
                 db.update("Data",contentValues, "data_id = ?", new String[]{String.valueOf(id)});
-                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h);
+                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h,true,context);
                 mssql_adapter.execute("");
             }
         }.start();
@@ -523,7 +537,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             public void onFinish() {
                 contentValues.put("status","gonderildi");
                 db.update("Data",contentValues, "data_id = ?", new String[]{String.valueOf(id)});
-                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h,s_data_1);
+                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h,s_data_1,true,context);
                 mssql_adapter.execute("");
             }
         }.start();
@@ -539,7 +553,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             @Override
             public void onFinish() {
-                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h,s_data_1,s_data_2);
+                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h,s_data_1,s_data_2,true,context);
                 mssql_adapter.execute("");
                 contentValues.put("status","gonderildi");
                 db.update("Data",contentValues, "data_id = ?", new String[]{String.valueOf(id)});
@@ -557,7 +571,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             @Override
             public void onFinish() {
-                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h,s_data_1,s_data_2,s_data_3);
+                MSSQL_Adapter mssql_adapter=new MSSQL_Adapter(s_data_h,s_data_1,s_data_2,s_data_3,true,context);
                 mssql_adapter.execute("");
                 contentValues.put("status","gonderildi");
                 db.update("Data",contentValues, "data_id = ?", new String[]{String.valueOf(id)});

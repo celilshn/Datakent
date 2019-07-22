@@ -81,11 +81,6 @@ public class MyAdapter extends BaseAdapter {
         txt_1.setText(datalar.getData1());
         txt_2.setText(datalar.getData2());
         txt_3.setText(datalar.getData3());}
-        if(datalar.getStatus().trim()=="beklemede")
-            convertView.setBackgroundColor(Color.parseColor("#55FB5555"));
-        else
-            convertView.setBackgroundColor(Color.parseColor("#557BFB55"));
-
         return convertView;
     }
 }

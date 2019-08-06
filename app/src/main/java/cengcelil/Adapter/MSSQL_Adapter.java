@@ -20,6 +20,8 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
     String data_1=null;
     String data_2=null;
     String data_3=null;
+    String data_4=null;
+    String data_5=null;
 
     Connection connection;
     int count,scount;
@@ -28,7 +30,7 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
     public static final String USER_NAME="DELL";
     public static final String PASS_WORD="dell";
     boolean check=true;
-    static String k1,k2,k3,k4;
+    static String k1,k2,k3,k4,k5,k6;
     Context context;
     public MSSQL_Adapter(String data_h,boolean c,Context context) {
         this.data_h = data_h;
@@ -68,11 +70,36 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
         this.context=context;
 
     }
+    public MSSQL_Adapter(String data_h, String data_1, String data_2, String data_3,String data_4,boolean c,Context context) {
+        this.data_h = data_h;
+        this.data_1 = data_1;
+        this.data_2 = data_2;
+        this.data_3 = data_3;
+        this.data_4 = data_4;
+        count=4;
+        if(!c)
+            create();
+        this.context=context;
+
+    }
+    public MSSQL_Adapter(String data_h, String data_1, String data_2, String data_3,String data_4,String data_5,boolean c,Context context) {
+        this.data_h = data_h;
+        this.data_1 = data_1;
+        this.data_2 = data_2;
+        this.data_3 = data_3;
+        this.data_4 = data_4;
+        this.data_5 = data_5;
+        count=4;
+        if(!c)
+            create();
+        this.context=context;
+
+    }
 
     public void create() {
         connection=Baglanti(USER_NAME,PASS_WORD,DATABASE_NAME,SERVER_NAME);
         String query = null;
-
+        String exist="DROP TABLE [IF EXISTS] [dbo].[Data]";
         if (count == 1) {
             query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
 
@@ -87,10 +114,18 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
 
             query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[" + data_1 + "] TEXT NULL,[" + data_2 + "] TEXT NULL,[" + data_3 + "] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
 
+        } else if (count == 5) {
+
+            query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[" + data_1 + "] TEXT NULL,[" + data_2 + "] TEXT NULL,[" + data_3 + "] TEXT NULL,[" + data_4 + "] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
+
+        } else if (count == 6) {
+
+            query = "CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,[" + data_h + "] TEXT NULL,[" + data_1 + "] TEXT NULL,[" + data_2 + "] TEXT NULL,[" + data_3 + "] TEXT NULL,[" + data_4 + "] TEXT NULL,[" + data_5 + "] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
         }
         Statement statement= null;
         try {
             statement = connection.createStatement();
+            ResultSet resultSet1=statement.executeQuery(exist);
             ResultSet resultSet=statement.executeQuery(query);
             if(resultSet.next()){
                 connection.close();
@@ -135,6 +170,25 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
                 k4=sharedPreferences.getString("key_table4","0");
 
             }
+            else if(scount==4)
+            {
+                k1=sharedPreferences.getString("key_table1","0");
+                k2=sharedPreferences.getString("key_table2","0");
+                k3=sharedPreferences.getString("key_table3","0");
+                k4=sharedPreferences.getString("key_table4","0");
+                k5=sharedPreferences.getString("key_table5","0");
+
+            }
+            else if(scount==5)
+            {
+                k1=sharedPreferences.getString("key_table1","0");
+                k2=sharedPreferences.getString("key_table2","0");
+                k3=sharedPreferences.getString("key_table3","0");
+                k4=sharedPreferences.getString("key_table4","0");
+                k5=sharedPreferences.getString("key_table5","0");
+                k6=sharedPreferences.getString("key_table6","0");
+
+            }
         }
         if(connection==null || check ==false)
         {
@@ -153,6 +207,12 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
             else if(count==4)
                 query="INSERT INTO [dbo].[Data] (["+k1+"],["+k2+"],["+k3+"],["+k4+"],[kontrol],[add_time]) VALUES('"+data_h+"','"+data_1+"','"+data_2+"','"+data_3
                         +"','not checked','" +currentDateTimeString+"');";
+            else if(count==5)
+                query="INSERT INTO [dbo].[Data] (["+k1+"],["+k2+"],["+k3+"],["+k4+"],["+k5+"],[kontrol],[add_time]) VALUES('"+data_h+"','"+data_1+"','"+data_2+"','"+data_3
+                        +"','"+data_4+"','not checked','" +currentDateTimeString+"');";
+            else if(count==6)
+                query="INSERT INTO [dbo].[Data] (["+k1+"],["+k2+"],["+k3+"],["+k4+"],["+k5+"],["+k6+"],[kontrol],[add_time]) VALUES('"+data_h+"','"+data_1+"','"+data_2+"','"+data_3
+                        +"','"+data_4+"','"+data_5+"','not checked','" +currentDateTimeString+"');";
 
             try {
                 Statement statement=connection.createStatement();

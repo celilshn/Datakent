@@ -26,11 +26,19 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
         b4.setOnClickListener(this);
-        b5.setOnClickListener(this);
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveTaskToBack(true);
+                Toast.makeText(SecondActivity.this, "Uygulama arkaplana alındı", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         intent_b1=new Intent(this,Button1Activity.class);
         intent_b2=new Intent(this,Button2Activity.class);
         intent_b3=new Intent(this,Button3Activity.class);
+        intent_b4=new Intent(this,Button4Activity.class);
         intent_b4=new Intent(this,Button4Activity.class);
     }
 
@@ -47,12 +55,12 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }
         else if(v==b3){
             startActivity(intent_b3);
-            Toast.makeText(this, "Onaylı Veriler", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Veri durumu", Toast.LENGTH_SHORT).show();
 
         }
         else if(v==b4){
             startActivity(intent_b4);
-            Toast.makeText(this, "Onaylanmamış veriler", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Veri Değişim Geçmişi", Toast.LENGTH_SHORT).show();
 
         }
     }

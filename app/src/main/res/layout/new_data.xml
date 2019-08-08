@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Tarih Sec"
             android:visibility="gone" />
     </LinearLayout>
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Tarih Sec"
             android:visibility="gone"
             tools:text="TARIH" />
@@ -73,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Tarih Sec"
             android:visibility="gone"
             tools:text="TARIH" />
@@ -98,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Tarih Sec"
             android:visibility="gone"
             tools:text="TARIH" />
@@ -122,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Tarih Sec"
             android:visibility="gone"
             tools:text="TARIH" />
@@ -146,6 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Tarih Sec"
             android:visibility="gone"
             tools:text="TARIH" />
@@ -155,12 +161,13 @@
         android:id="@+id/checkBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Onaylı Veri" />
+        android:text="Direkt Gönder" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ekle" />
+        android:text="Ekle"
+        android:background="@drawable/button_backgroun_shape" />
 
 </LinearLayout>

@@ -24,6 +24,7 @@ public class Button4Activity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     String table_1,table_2,table_3,table_4;
+    TextView t1,t2;
     int count;
 
     @Override
@@ -32,7 +33,12 @@ public class Button4Activity extends AppCompatActivity {
         setContentView(R.layout.activity_button4);
         sharedPreferences= getSharedPreferences("key", Context.MODE_PRIVATE);
         table_1=sharedPreferences.getString("key_table1","0");
-        databaseHelper=new DatabaseHelper(this,table_1,22);
+        table_2=sharedPreferences.getString("key_table2","-");
+        t1=findViewById(R.id.textView10);
+        t2=findViewById(R.id.textView19);
+        t1.setText(table_1);
+        t2.setText(table_2);
+        databaseHelper=new DatabaseHelper(this,table_1,table_2,22);
         listView=findViewById(R.id.list_view_b4);
         arrayList=new ArrayList<>();
         LoadDataInListView();

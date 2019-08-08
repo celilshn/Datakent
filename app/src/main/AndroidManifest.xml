@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Button4Activity"/>
+        <activity android:name=".Button4Activity" android:screenOrientation="landscape"/>
         <activity android:name=".Button3Activity" />
         <activity android:name=".Button2Activity"/>
         <activity android:name=".Button1Activity" />

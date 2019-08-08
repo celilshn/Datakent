@@ -25,7 +25,7 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
 
     Connection connection;
     int count,scount;
-    public static final String SERVER_NAME="192.168.1.102:1433";
+    public static final String SERVER_NAME="192.168.1.102";
     public static final String DATABASE_NAME="Datakent";
     public static final String USER_NAME="DELL";
     public static final String PASS_WORD="dell";
@@ -76,7 +76,7 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
         this.data_2 = data_2;
         this.data_3 = data_3;
         this.data_4 = data_4;
-        count=4;
+        count=5;
         if(!c)
             create();
         this.context=context;
@@ -89,7 +89,7 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
         this.data_3 = data_3;
         this.data_4 = data_4;
         this.data_5 = data_5;
-        count=4;
+        count=6;
         if(!c)
             create();
         this.context=context;
@@ -99,7 +99,6 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
     public void create() {
         connection=Baglanti(USER_NAME,PASS_WORD,DATABASE_NAME,SERVER_NAME);
         String query = null;
-        String exist="DROP TABLE [IF EXISTS] [dbo].[Data]";
         if (count == 1) {
             query="CREATE TABLE [dbo].[Data] ([data_id] INT  IDENTITY (1, 1) NOT NULL,["+data_h+"] TEXT NULL,[kontrol] TEXT NULL,[add_time] TEXT NULL,CONSTRAINT [PK_Data] PRIMARY KEY CLUSTERED ([data_id] ASC))";
 
@@ -125,7 +124,6 @@ public class MSSQL_Adapter extends AsyncTask<String,String,String> {
         Statement statement= null;
         try {
             statement = connection.createStatement();
-            ResultSet resultSet1=statement.executeQuery(exist);
             ResultSet resultSet=statement.executeQuery(query);
             if(resultSet.next()){
                 connection.close();

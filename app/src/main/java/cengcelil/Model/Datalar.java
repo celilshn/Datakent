@@ -16,10 +16,10 @@ public class Datalar {
     }
 
     String date;
-    public Datalar(String log_id, String data_id,String t1, String log,String date,int k) {
+    public Datalar(String log_id,String datah, String data1,String log,String date,int k) {
         this.log_id=log_id;
-        this.id = data_id;
-        this.datah=t1;
+        this.datah=datah;
+        this.data1 = data1;
         this.date=date;
      this.log=log;
 

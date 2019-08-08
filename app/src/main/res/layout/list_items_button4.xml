@@ -1,54 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/listview1_design"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/textView23"
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
 
-            android:text="log_id" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:text="log_id"
+            android:textAlignment="center"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="viewStart"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView24"
-            android:layout_width="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
 
-            android:text="data id" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:text="data h" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:text="data id"
+            android:textAlignment="viewStart"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView26"
-            android:layout_width="75dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:text="operation" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:text="operation"
+            android:textAlignment="viewStart"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView27"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:text="time" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:text="time"
+            android:textAlignment="viewStart"
+            android:textSize="12sp" />
 
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:background="@drawable/listview1_design"
     android:orientation="vertical">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:text="TextView" />
 
     <LinearLayout
@@ -24,13 +26,24 @@
             android:id="@+id/button9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Button" />
+
+        <Button
+            android:id="@+id/button24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/button10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_backgroun_shape"
             android:text="Button" />
+
     </LinearLayout>
 
 </LinearLayout>

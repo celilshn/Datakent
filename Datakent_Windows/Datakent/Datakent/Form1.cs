@@ -50,8 +50,14 @@ namespace Datakent
             sqlDataAdapter_wait,sqlDataAdapter_checked;
         DataTable 
             dataTable_wait,dataTable_checked;
-        DataGridViewButtonColumn 
-            buttonColumn;
+
+        private void Yenile_Click(object sender, EventArgs e)
+        {
+            update_loads();
+        }
+
+        DataGridViewButtonColumn
+buttonColumn;
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

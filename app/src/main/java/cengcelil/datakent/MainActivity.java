@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Intent i;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    private Boolean firstTime = null;
+    private static Boolean firstTime = null;
     public static final String KEY_USERNAME="username";
     public static final String KEY_PASSWORD="password";
     public static final String URL_IP="192.168.1.102";
@@ -71,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                username=et_username.getText().toString().trim();
-                password=et_pass.getText().toString().trim();
+                username=et_username.getText() .toString().trim();
+                password=et_pass.getText() .toString().trim();
                 if(username.length()==0)
                 {
                     et_username.setError("Kullanıcı adı kısmı boş bırakılamaz.");
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private boolean isFirstTime() {
         if (firstTime == null) {
-            final SharedPreferences mPreferences = this.getSharedPreferences("first_time", Context.MODE_PRIVATE);
+            final SharedPreferences mPreferences = this.getSharedPreferences("first_time_", Context.MODE_PRIVATE);
             firstTime = mPreferences.getBoolean("firstTime", true);
             if (firstTime) {
                 // Code to run once
@@ -313,48 +314,50 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         int selected = spinner.getSelectedItemPosition();
+                        Locale trlocale = new Locale("tr-TR");
 
                         if (selected == 0) {
-                            editor.putString("key_table1", col_name_1.getText().toString());
+
+                            editor.putString("key_table1", String.valueOf(String.valueOf(col_name_1.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
                             editor.putInt("key_count", selected);
 
 
                         } else if (selected == 1) {
-                            editor.putString("key_table1", col_name_1.getText().toString());
-                            editor.putString("key_table2", col_name_2.getText().toString());
+                            editor.putString("key_table1", String.valueOf(String.valueOf(col_name_1.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table2", String.valueOf(String.valueOf(col_name_2.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
                             editor.putInt("key_count", selected);
 
 
                         } else if (selected == 2) {
-                            editor.putString("key_table1", col_name_1.getText().toString());
-                            editor.putString("key_table2", col_name_2.getText().toString());
-                            editor.putString("key_table3", col_name_3.getText().toString());
+                            editor.putString("key_table1", String.valueOf(String.valueOf(col_name_1.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table2", String.valueOf(String.valueOf(col_name_2.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table3", String.valueOf(String.valueOf(col_name_3.getText()).replaceAll(" ", "_").toCharArray()));
                             editor.putInt("key_count", selected);
 
                         } else if (selected == 3) {
-                            editor.putString("key_table1", col_name_1.getText().toString());
-                            editor.putString("key_table2", col_name_2.getText().toString());
-                            editor.putString("key_table3", col_name_3.getText().toString());
-                            editor.putString("key_table4", col_name_4.getText().toString());
+                            editor.putString("key_table1", String.valueOf(String.valueOf(col_name_1.getText()).replaceAll(" ", "_").toCharArray()));
+                            editor.putString("key_table2", String.valueOf(String.valueOf(col_name_2.getText()).replaceAll(" ", "_").toCharArray()));
+                            editor.putString("key_table3", String.valueOf(String.valueOf(col_name_3.getText()).replaceAll(" ", "_").toCharArray()));
+                            editor.putString("key_table4", String.valueOf(String.valueOf(col_name_4.getText()).replaceAll(" ", "_").toCharArray()));
                             editor.putInt("key_count", selected);
 
 
                         } else if (selected == 4) {
-                            editor.putString("key_table1", col_name_1.getText().toString());
-                            editor.putString("key_table2", col_name_2.getText().toString());
-                            editor.putString("key_table3", col_name_3.getText().toString());
-                            editor.putString("key_table4", col_name_4.getText().toString());
-                            editor.putString("key_table5", col_name_5.getText().toString());
+                            editor.putString("key_table1", String.valueOf(String.valueOf(col_name_1.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table2", String.valueOf(String.valueOf(col_name_2.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table3", String.valueOf(String.valueOf(col_name_3.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table4", String.valueOf(String.valueOf(col_name_4.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table5", String.valueOf(String.valueOf(col_name_5.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
                             editor.putInt("key_count", selected);
 
 
                         } else if (selected == 5) {
-                            editor.putString("key_table1", col_name_1.getText().toString());
-                            editor.putString("key_table2", col_name_2.getText().toString());
-                            editor.putString("key_table3", col_name_3.getText().toString());
-                            editor.putString("key_table4", col_name_4.getText().toString());
-                            editor.putString("key_table5", col_name_5.getText().toString());
-                            editor.putString("key_table6", col_name_6.getText().toString());
+                            editor.putString("key_table1", String.valueOf(String.valueOf(col_name_1.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table2", String.valueOf(String.valueOf(col_name_2.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table3", String.valueOf(String.valueOf(col_name_3.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table4", String.valueOf(String.valueOf(col_name_4.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table5", String.valueOf(String.valueOf(col_name_5.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
+                            editor.putString("key_table6", String.valueOf(String.valueOf(col_name_6.getText()).replaceAll(" ", "_").toCharArray()).toLowerCase(trlocale));
                             editor.putInt("key_count", selected);
                         }
 

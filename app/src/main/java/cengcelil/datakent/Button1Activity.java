@@ -15,10 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
 
 import cengcelil.Adapter.MyAdapter;
 import cengcelil.Model.Datalar;
@@ -32,7 +30,7 @@ public class Button1Activity extends AppCompatActivity {
     SharedPreferences sharedPreferences,fortype;
     String table_1,table_2,table_3,table_4,table_5,table_6;
     static String type1,type2,type3,type4,type5,type6;
-    TextView t1,t2;
+    TextView t1,t2,t3;
     int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +38,7 @@ public class Button1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_button1);
         t1=findViewById(R.id.textView14);
         t2=findViewById(R.id.textView15);
+        t3=findViewById(R.id.textView11);
 
 
         sharedPreferences= getSharedPreferences("key", Context.MODE_PRIVATE);
@@ -105,6 +104,7 @@ public class Button1Activity extends AppCompatActivity {
         }
         t1.setText("id");
         t2.setText(table_1);
+        t3.setText(table_2);
         listView=findViewById(R.id.listview);
         floatingActionButton=findViewById(R.id.fab);
         arrayList=new ArrayList<>();
@@ -362,10 +362,12 @@ public class Button1Activity extends AppCompatActivity {
             public void onClick(View v) {
                 String onay;
                 boolean result = false;
-                if(checked_data.isChecked())
-                    onay="iptal";
-                else
+                if(checked_data.isChecked()){
+                    onay="gonderildi";
+                }
+                else{
                     onay="beklemede";
+                }
                 if(count==0)
                 {
 

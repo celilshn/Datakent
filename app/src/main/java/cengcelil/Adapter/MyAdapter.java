@@ -58,6 +58,8 @@ public class MyAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.list_items_button1, null);
             txt_id = convertView.findViewById(R.id.textView_bt1_id);
             txt_h = convertView.findViewById(R.id.textView_bt1_h);
+            txt_1 = convertView.findViewById(R.id.textView12);
+            txt_1.setText(datalar.getData1());
             txt_id.setText(datalar.getId() + ".");
             txt_h.setText(datalar.getDatah());
         }else if (activity == 2 || activity==3) {
@@ -161,13 +163,21 @@ public class MyAdapter extends BaseAdapter {
         } else if (activity == 4) {
             convertView = layoutInflater.inflate(R.layout.list_items_button4, null);
             txt_log_id = convertView.findViewById(R.id.textView23);
-            txt_id = convertView.findViewById(R.id.textView24);
-            txt_h = convertView.findViewById(R.id.textView25);
+            txt_h = convertView.findViewById(R.id.textView9);
+            txt_1 = convertView.findViewById(R.id.textView24);
             txt_edit = convertView.findViewById(R.id.textView26);
             txt_date = convertView.findViewById(R.id.textView27);
+            String dh=datalar.getDatah();
+            String d1=datalar.getData1();
+            if (dh.equals(""))
+                txt_h.setText("-");
+            else
+                txt_h.setText(dh);
+            if (d1.equals(""))
+                txt_1.setText("-");
+            else
+                txt_1.setText(d1);
             txt_log_id.setText(datalar.getLog_id());
-            txt_id.setText(datalar.getId());
-            txt_h.setText(datalar.getDatah());
             txt_edit.setText(datalar.getLog());
             txt_date.setText(datalar.getDate());
         }
